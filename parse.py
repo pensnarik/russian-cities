@@ -3,7 +3,7 @@
 # Russian cities parser
 
 # Script gets list of the Russian cities from Wikipedia and basic information
-# about them: name, subject, district, population and coordinames.
+# about them: name, subject, district, population and coordinates.
 # Copyright Andrey Zhidenkov, 2018 (c)
 
 import os
