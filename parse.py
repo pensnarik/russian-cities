@@ -24,10 +24,15 @@ class App(BasicParser):
         self.cache = FileCache(namespace='russian-cities', path=os.environ.get('CACHE_PATH'))
         self.net = NetworkManager()
 
-    def parse_city(self, url):
+    def get_coords(self, url):
         page = self.get_page(url)
         html = fromstring(page)
-        span = html.xpath('//span[contains(@class, "coordinates")]//a[@class="mw-kartographer-maplink"]')[0]
+
+        try:
+            span = html.xpath('//span[contains(@class, "coordinates")]//a[@class="mw-kartographer-maplink"]')[0]
+        except IndexError:
+            return {'lat': '', 'lon': ''}
+
         return {'lat': span.get('data-lat'), 'lon': span.get('data-lon')}
 
     def run(self):
@@ -45,8 +50,10 @@ class App(BasicParser):
             population = int(columns[5].get('data-sort-value'))
 
             city = {'name': name, 'subject': subject, 'district': district, 'population': population}
-            city.update({'coords': self.parse_city('https://ru.wikipedia.org%s' % url)})
+            city.update({'coords': self.get_coords('https://ru.wikipedia.org%s' % url)})
             self.data.append(city)
+
+            print(name, file=sys.stderr)
         output = sorted(self.data, key=lambda k: k['name'])
         print(json.dumps(output, ensure_ascii=False, sort_keys=True))
 
