@@ -41,7 +41,7 @@ class App(BasicParser):
 
         for tr in html.xpath('//table/tbody/tr'):
             columns = tr.xpath('.//td')
-            if len(columns) != 7:
+            if len(columns) != 8:
                 continue
             name = columns[2].xpath('./a')[0].text_content().strip()
             url = columns[2].xpath('./a')[0].get('href')
