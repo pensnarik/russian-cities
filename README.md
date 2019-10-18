@@ -7,7 +7,7 @@
 name|Название города
 subject|Регион
 district|Федеральный округ
-population|Начеление
+population|Население
 coords|Координаты ('lat' - широта, 'lon' - долгота)
 
 Данные взяты из [Википедии](https://ru.wikipedia.org/wiki/Список_городов_России).
