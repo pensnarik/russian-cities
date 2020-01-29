@@ -1,3 +1,5 @@
+[[!Cities count](https://img.shields.io/badge/cities-1117-green)]
+
 # Список городов России
 
 Список городов России в формате JSON. Значения полей в JSON:
