@@ -1,4 +1,4 @@
-[[!Cities count](https://img.shields.io/badge/cities-1117-green)]
+[![Cities count](https://img.shields.io/badge/cities-1117-green)]
 
 # Список городов России
 
