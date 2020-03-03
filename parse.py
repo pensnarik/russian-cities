@@ -54,7 +54,8 @@ class App(BasicParser):
             self.data.append(city)
 
             print(name, file=sys.stderr)
-        output = sorted(self.data, key=lambda k: k['name'])
+
+        output = sorted(self.data, key=lambda k: '%s|%s|%s' % (k['name'], k['subject'], k['district']))
         print(json.dumps(output, ensure_ascii=False, sort_keys=True))
 
 if __name__ == '__main__':
